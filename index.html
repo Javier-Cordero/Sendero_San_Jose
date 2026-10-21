@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senderos San José · Turismo en las Misiones Jesuíticas</title>
+  <meta name="description" content="Descubre la magia de San José de Chiquitos: Conjunto Misional, Santa Cruz la Vieja, Valle de la Luna y Mirador de Ñuflo. Tours guiados.">
+  
+  <!-- Hoja de estilos principal (Laboratorios 5, 6 y 7) -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- Íconos y color de tema -->
+  <meta name="theme-color" content="#1f5f3f">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!-- Open Graph: vista previa al compartir -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Senderos San José · Tours con guías locales">
+  <meta property="og:description" content="Explora las Misiones Jesuíticas, el Valle de la Luna y la historia de Santa Cruz la Vieja.">
+  <meta property="og:image" content="https://senderossanjose.bo/img/portada-sanjose-960.jpg">
+  <meta property="og:url" content="https://senderossanjose.bo/">
+  <meta property="og:locale" content="es_BO">
+</head>
+<body>
+
+  <!-- CABECERA Y MENÚ (Con div.marca del Lab 7) -->
+   <iframe src="./Component/header.html" frameborder="0"></iframe>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    
+    <!-- Imagen principal (Hero) -->
+    <picture>
+      <img src="img/portada-sanjose-960.jpg"
+           width="708" height="433"
+           fetchpriority="high"
+           alt="Fachada de piedra de la Iglesia Misional de San José de Chiquitos con su frontis triangular y arcos tallados.">
+    </picture>
+
+    <h1>Bienvenidos a San José de Chiquitos</h1>
+    <p>San José de Chiquitos es un tesoro vivo. Aquí se fundó la primera Santa Cruz de la Sierra y se levanta el único Conjunto Misional Jesuítico construido enteramente en piedra. Déjate maravillar por su historia, su cultura viva y los increíbles paisajes de la Serranía El Riquío.</p>
+    <a href="tours.html" class="boton">Ver todos los tours</a>
+
+    <!-- SECCIÓN DE VIDEO (Sin style en línea, controlado por CSS Lab 5) -->
+    <section>
+      <h2>San José en 16 segundos</h2>
+      <video controls preload="none"
+             poster="video/poster-sanjose.jpg"
+             width="360" height="640">
+        <source src="video/sanjose.mp4" type="video/mp4">
+        <track kind="captions"
+               src="video/sanjose.vtt"
+               srclang="es" label="Español" default>
+        <p>Tu navegador no puede reproducir este video. <a href="video/sanjose.mp4">Descárgalo aquí</a>.</p>
+      </video>
+    </section>
+
+    <!-- SECCIÓN DE TOURS DESTACADOS (Tarjetas Flexbox e Insignia Lab 7) -->
+    <section>
+      <h2>Tours destacados</h2>
+      <div class="tarjetas">
+        
+        <!-- Tarjeta 1: Conjunto Misional (Con Insignia) -->
+        <article class="tarjeta">
+          <p class="insignia">Más vendido</p>
+          <img src="img/misiones-960.jpg" width="708" height="433" loading="lazy" alt="">
+          <h3>Conjunto Misional Jesuítico</h3>
+          <p>Explora el único conjunto misional construido enteramente en piedra de la Chiquitania, declarado Patrimonio de la Humanidad por la UNESCO. Duración: medio día. <strong>Desde Bs 100 por persona.</strong></p>
+        </article>
+
+        <!-- Tarjeta 2: Santa Cruz la Vieja -->
+        <article class="tarjeta">
+          <img src="img/santacruzvieja-960.jpg" width="980" height="600" loading="lazy" alt="">
+          <h3>Parque Nacional Santa Cruz la Vieja</h3>
+          <p>Descubre el sitio arqueológico donde Ñuflo de Cháves fundó la primera Santa Cruz de la Sierra en 1561, rodeado de bosque seco chiquitano. Duración: medio día. <strong>Desde Bs 120 por persona.</strong></p>
+        </article>
+
+        <!-- Tarjeta 3: Valle de la Luna -->
+        <article class="tarjeta">
+          <img src="img/valleluna-960.jpg" width="640" height="480" loading="lazy" alt="">
+          <h3>Valle de la Luna</h3>
+          <p>Recorre un singular paisaje de formaciones rocosas milenarias talladas por el tiempo a 5 km de San José, ideal para caminatas panorámicas. Duración: día completo. <strong>Desde Bs 200 por persona.</strong></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ¿POR QUÉ ELEGIRNOS? -->
+    <section>
+      <h2>¿Por qué elegirnos?</h2>
+      <ul>
+        <li>Guías locales especializados en historia misional jesuítica y naturaleza chiquitana</li>
+        <li>Grupos reducidos de máximo 8 personas para una experiencia personalizada</li>
+        <li>Transporte, entradas y seguro incluidos en nuestros recorridos</li>
+        <li>Apoyamos directamente a los talleres de artesanos y músicos de San José</li>
+      </ul>
+    </section>
+
+  </main>
+  <!-- Botón flotante justo antes del footer (Lab 7) -->
+  <a class="whatsapp-flotante" href="https://wa.me/59170000000">Reservar por WhatsApp</a>
+  <!-- PIE DE PÁGINA -->  
+  <footer>
+    <address>
+      <p>Senderos San José · Plaza Principal, Frente al Conjunto Misional, San José de Chiquitos, Bolivia</p>
+      <p>
+        WhatsApp: <a href="https://wa.me/59170000000">+591 700 00000</a> · 
+        Correo: <a href="mailto:reservas@senderossanjose.bo">reservas@senderossanjose.bo</a>
+      </p>
+    </address>
+    <p>© 2026 Senderos San José. Sitio desarrollado por: Darcko Alejandro Roca – Diseño Web I, UPDS</p>
+    <p><a href="legal/politicas.html">Políticas de reserva y cancelación</a></p>
+  </footer>  
+</body>
+</html>
