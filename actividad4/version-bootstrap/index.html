@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senderos San José · Versión Bootstrap</title>
+  <meta name="description" content="Prototipo de la portada de Senderos San José construido con el framework Bootstrap 5.3, con la identidad de la marca, modal de reserva y carrusel.">
+  <link rel="canonical" href="https://senderossanjose.bo/version-bootstrap/">
+
+  <!-- Lab 10 · Bootstrap 5.3.8 (copia local en vendor/, versión fija). Alternativa por CDN con integridad (SRI):
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Orden importa: primero Bootstrap, DESPUÉS nuestro CSS (mismo peso de selector, gana el último) -->
+  <link rel="stylesheet" href="css/personalizado.css">
+  <!-- Lab 11 · tema claro/oscuro: va en el head (sin async) para evitar el destello del tema equivocado -->
+  <script src="js/tema.js"></script>
+
+  <meta name="theme-color" content="#1f5f3f">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <!-- 1. NAVBAR colapsable y accesible (Components > Navbar) -->
+  <header>
+    <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top" aria-label="Menú principal">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Senderos San José</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menu-principal"
+                aria-controls="menu-principal" aria-expanded="false"
+                aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="../tours.html">Tours</a></li>
+            <li class="nav-item"><a class="nav-link" href="../galeria.html">Galería</a></li>
+            <li class="nav-item"><a class="nav-link" href="../nosotros.html">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- 2. BIENVENIDA en la grilla de 12 columnas (Layout > Grid) -->
+    <section class="container py-5" aria-labelledby="bienvenida">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6">
+          <h1 class="display-5 fw-bold" id="bienvenida">Bienvenidos a San José de Chiquitos</h1>
+          <p class="lead">San José de Chiquitos es un tesoro vivo. Aquí se fundó la primera Santa Cruz de la Sierra y se levanta el único Conjunto Misional Jesuítico construido enteramente en piedra.</p>
+          <!-- Lab 11: junto al botón principal, el botón que abre el modal de reserva rápida -->
+          <p class="d-flex flex-wrap gap-2">
+            <a class="btn btn-warning btn-lg rounded-pill px-4" href="../tours.html">Ver todos los tours</a>
+            <button type="button" class="btn btn-outline-success btn-lg rounded-pill px-4"
+                    data-bs-toggle="modal" data-bs-target="#reserva-rapida">Reserva rápida</button>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img class="img-fluid rounded-4 shadow"
+               src="../img/portada-sanjose-960.jpg"
+               width="708" height="433"
+               fetchpriority="high"
+               alt="Fachada de piedra de la Iglesia Misional de San José de Chiquitos con su frontis triangular y arcos tallados.">
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TOURS en cards: 1 → 2 → 3 columnas con row-cols -->
+    <section class="container pb-5" aria-labelledby="tours-titulo">
+      <h2 class="mb-4" id="tours-titulo">Tours destacados</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+        <div class="col">
+          <article class="card h-100 shadow-sm">
+            <img class="card-img-top" src="../img/misiones-960.jpg" width="708" height="433" loading="lazy" alt="">
+            <div class="card-body">
+              <p class="badge text-bg-danger">Más vendido</p>
+              <h3 class="card-title h5">Conjunto Misional Jesuítico</h3>
+              <p class="card-text">Explora el único conjunto misional construido enteramente en piedra de la Chiquitania, declarado Patrimonio de la Humanidad por la UNESCO.</p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span>Medio día · <strong>Bs 100</strong></span>
+              <a class="btn btn-outline-success btn-sm" href="../tours.html#misiones">Ver detalles<span class="visually-hidden"> del Conjunto Misional Jesuítico</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card h-100 shadow-sm">
+            <img class="card-img-top" src="../img/santacruzvieja-960.jpg" width="980" height="600" loading="lazy" alt="">
+            <div class="card-body">
+              <h3 class="card-title h5">Parque Nacional Santa Cruz la Vieja</h3>
+              <p class="card-text">Descubre el sitio arqueológico donde Ñuflo de Cháves fundó la primera Santa Cruz de la Sierra en 1561, rodeado de bosque seco chiquitano.</p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span>Medio día · <strong>Bs 120</strong></span>
+              <a class="btn btn-outline-success btn-sm" href="../tours.html#santacruzvieja">Ver detalles<span class="visually-hidden"> de Santa Cruz la Vieja</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card h-100 shadow-sm">
+            <img class="card-img-top" src="../img/valleluna-960.jpg" width="640" height="480" loading="lazy" alt="">
+            <div class="card-body">
+              <h3 class="card-title h5">Valle de la Luna</h3>
+              <p class="card-text">Recorre un singular paisaje de formaciones rocosas milenarias talladas por el tiempo, ideal para caminatas panorámicas.</p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span>Día completo · <strong>Bs 200</strong></span>
+              <a class="btn btn-outline-success btn-sm" href="../tours.html#valleluna">Ver detalles<span class="visually-hidden"> del Valle de la Luna</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Reto Lab 10: el cuarto tour aparece/desaparece con el componente Collapse -->
+      <p class="text-center mt-4">
+        <button class="btn btn-outline-success rounded-pill px-4" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mas-tours"
+                aria-expanded="false" aria-controls="mas-tours">Mostrar u ocultar más tours</button>
+      </p>
+      <div class="collapse" id="mas-tours">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <div class="col">
+            <article class="card h-100 shadow-sm">
+              <img class="card-img-top" src="../img/mirador-960.jpg" width="708" height="432" loading="lazy" alt="">
+              <div class="card-body">
+                <h3 class="card-title h5">Mirador de Ñuflo y Balneario El Sutó</h3>
+                <p class="card-text">Asciende por la Serranía El Riquío hasta el mirador y luego relájate en las piscinas del balneario rodeado de vegetación.</p>
+              </div>
+              <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                <span>Día completo · <strong>Bs 220</strong></span>
+                <a class="btn btn-outline-success btn-sm" href="../tours.html#mirador">Ver detalles<span class="visually-hidden"> del Mirador de Ñuflo</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab 11: CARRUSEL accesible (sin rotación automática: no lleva data-bs-ride) -->
+    <section class="container pb-5" aria-labelledby="galeria-titulo">
+      <h2 class="mb-4" id="galeria-titulo">Galería</h2>
+      <div id="galeria-destacada" class="carousel slide" data-bs-theme="light">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#galeria-destacada" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1: Conjunto Misional de San José"></button>
+          <button type="button" data-bs-target="#galeria-destacada" data-bs-slide-to="1" aria-label="Foto 2: Santa Cruz la Vieja"></button>
+          <button type="button" data-bs-target="#galeria-destacada" data-bs-slide-to="2" aria-label="Foto 3: Valle de la Luna"></button>
+          <button type="button" data-bs-target="#galeria-destacada" data-bs-slide-to="3" aria-label="Foto 4: Mirador de Ñuflo"></button>
+        </div>
+        <div class="carousel-inner rounded-4 shadow">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="../img/misiones-960.jpg" width="708" height="433"
+                 alt="Vista aérea del Conjunto Misional de San José de Chiquitos: iglesia de piedra, claustro con jardín y campanario, con el cerro Turubó al fondo.">
+            <div class="carousel-caption"><p class="mb-0">Conjunto Misional, Patrimonio de la Humanidad</p></div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../img/santacruzvieja-960.jpg" width="980" height="600" loading="lazy"
+                 alt="Portón de madera tallada con el letrero «Sitio Arqueológico Santa Cruz la Vieja» y una niña señalando las figuras esculpidas.">
+            <div class="carousel-caption"><p class="mb-0">Santa Cruz la Vieja, fundada en 1561</p></div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../img/valleluna-960.jpg" width="640" height="480" loading="lazy"
+                 alt="Formaciones rocosas oscuras entre la vegetación al atardecer, con cruces entre las rocas y un cerro al fondo.">
+            <div class="carousel-caption"><p class="mb-0">Las formaciones rocosas del Valle de la Luna</p></div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../img/mirador-960.jpg" width="708" height="432" loading="lazy"
+                 alt="Dos visitantes sobre una roca rojiza en lo alto del mirador, con el valle y la selva chiquitana hasta el horizonte.">
+            <div class="carousel-caption"><p class="mb-0">Vistas panorámicas desde el Mirador de Ñuflo</p></div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#galeria-destacada" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Foto anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#galeria-destacada" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Foto siguiente</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. ¿POR QUÉ ELEGIRNOS? -->
+    <section class="bg-body-tertiary py-5" aria-labelledby="por-que">
+      <div class="container">
+        <h2 class="mb-4" id="por-que">¿Por qué elegirnos?</h2>
+        <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 list-unstyled mb-0">
+          <li class="col"><div class="p-3 rounded-3 border bg-body h-100">Guías locales especializados en historia misional jesuítica y naturaleza chiquitana</div></li>
+          <li class="col"><div class="p-3 rounded-3 border bg-body h-100">Grupos reducidos de máximo 8 personas para una experiencia personalizada</div></li>
+          <li class="col"><div class="p-3 rounded-3 border bg-body h-100">Transporte, entradas y seguro incluidos en nuestros recorridos</div></li>
+          <li class="col"><div class="p-3 rounded-3 border bg-body h-100">Apoyamos directamente a los talleres de artesanos y músicos de San José</div></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 5. PIE -->
+  <footer class="bg-success-subtle py-4 mt-5">
+    <div class="container d-md-flex justify-content-between">
+      <address class="mb-3 mb-md-0">
+        Senderos San José · Plaza Principal, Frente al Conjunto Misional, San José de Chiquitos, Bolivia
+      </address>
+      <p class="mb-0">WhatsApp: <a href="https://wa.me/59170000000">+591 700 00000</a> · <a href="mailto:reservas@senderossanjose.bo">reservas@senderossanjose.bo</a></p>
+    </div>
+  </footer>
+
+  <!-- Lab 11 · MODAL de reserva rápida (sin aria-hidden inicial: Bootstrap lo gestiona al abrir) -->
+  <div class="modal fade" id="reserva-rapida" tabindex="-1" role="dialog" aria-labelledby="reserva-rapida-titulo">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="../gracias.html" method="get">
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="reserva-rapida-titulo">Reserva rápida</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="rr-nombre" class="form-label">Nombre completo *</label>
+              <input type="text" class="form-control" id="rr-nombre" name="nombre" autocomplete="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="rr-celular" class="form-label">Celular *</label>
+              <input type="tel" class="form-control" id="rr-celular" name="celular" inputmode="numeric"
+                     pattern="[67][0-9]{7}" aria-describedby="rr-ayuda" required>
+              <div id="rr-ayuda" class="form-text">8 dígitos, empieza con 6 o 7. Ejemplo: 70000000</div>
+            </div>
+            <div class="mb-3">
+              <label for="rr-tour" class="form-label">Tour *</label>
+              <select class="form-select" id="rr-tour" name="tour" required>
+                <option value="">Selecciona un tour...</option>
+                <option value="misiones">Conjunto Misional Jesuítico</option>
+                <option value="santacruzvieja">Parque Nacional Santa Cruz la Vieja</option>
+                <option value="valleluna">Valle de la Luna</option>
+                <option value="mirador">Mirador de Ñuflo y El Sutó</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-warning">Enviar solicitud</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANTES de </body>: sin este script los botones de Bootstrap no hacen nada -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Al abrirse el modal, el foco entra al primer campo (Bootstrap ignora el atributo autofocus) -->
+  <script src="js/reserva.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+ "A_sin_min-width_ni_width": {
+  "scrollWidth": 398,
+  "clientWidth": 390,
+  "anchoMain": 398,
+  "anchoTabla": 366,
+  "minContentTabla": 366
+ },
+ "B_solo_min-width0": {
+  "scrollWidth": 398,
+  "clientWidth": 390,
+  "anchoMain": 398,
+  "anchoTabla": 366,
+  "minContentTabla": 366
+ },
+ "C_min-width0_y_width100": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "anchoMain": 390,
+  "anchoTabla": 366,
+  "minContentTabla": 366
+ }
+}

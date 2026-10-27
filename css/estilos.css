@@ -1,0 +1,801 @@
+/* ==========================================================================
+   Senderos San José — Hoja de estilos principal
+   Laboratorios 5 a 11 (Diseño Web I, UPDS)
+
+   Orden de la hoja:
+     Lab 5  · secciones 1-5    variables, reset, tipografía, enlaces, main
+     Lab 6  · secciones 6-11   selectores, pseudoclases y pseudoelementos
+     Lab 7  · secciones 12-15  cabecera, tarjetas, botón flotante, pie
+     Lab 8  · secciones 16-20  CSS Grid (esqueleto, portada, galería, fichas, pie)
+     Lab 9  · secciones 21-25  tokens semánticos, mobile-first, modo oscuro, impresión
+     Lab 11 · secciones 26-28  transiciones, animación y reduced-motion
+
+   REGLA DEL LAB 9: ningún color está escrito a mano fuera de :root, del bloque
+   de modo oscuro (sección 24) y del bloque de impresión (sección 25).
+   ========================================================================== */
+
+/* ---------- 1. Variables (la identidad de la marca en un solo lugar) ---------- */
+:root {
+  /* Colores de la marca (Bosque Chiquitano, Sol y Tierra/Piedra Misional) */
+  --color-bosque: #1f5f3f;   /* verde principal (títulos, enlaces) */
+  --color-sol: #f2c14e;      /* dorado de acento (botones, subrayado activo) */
+  --color-tierra: #9a3412;   /* terracota misional (hover, foco, drop cap) */
+  --color-texto: #1f2933;    /* texto principal */
+  --color-suave: #5b6770;    /* texto secundario / eslogan / enlaces visitados */
+  --color-fondo: #fbf8f2;    /* fondo crema cálido */
+
+  /* ---- 21. Tokens SEMÁNTICOS (Lab 9): nombran la FUNCIÓN, no el color ---- */
+  --color-superficie: #ffffff;          /* tarjetas, campos, article:target */
+  --color-borde: #ddd6c7;               /* bordes suaves */
+  --color-borde-fuerte: #b9b2a3;        /* borde de los campos del formulario */
+  --color-cebra: #f1ece1;               /* filas pares de la tabla */
+  --color-resalte: #fbeecb;             /* fila bajo el puntero */
+  --color-error-fondo: #fdf1ec;         /* campo con error */
+  --color-marca-fondo: #1f5f3f;         /* fondos de marca: pie, encabezado de tabla, botón flotante */
+  --color-texto-sobre-marca: #ffffff;   /* texto sobre fondos de marca/acento */
+  --color-texto-sobre-sol: #1f2933;     /* texto sobre el dorado (.boton, ::selection): NO cambia en oscuro */
+  --color-acento-fondo: #9a3412;        /* fondo de .insignia y hover del botón flotante: NO cambia en oscuro */
+
+  /* Capa oscura de la portada (siempre oscura: el texto de encima es blanco) */
+  --velo-rgb: 15 35 25;
+
+  /* Sombras (también son colores: viven aquí) */
+  --sombra-cabecera: 0 2px 10px rgb(0 0 0 / 0.1);
+  --sombra-tarjeta: 0 4px 12px rgb(31 41 51 / 0.06);
+  --sombra-tarjeta-elevada: 0 10px 24px rgb(31 41 51 / 0.14);
+  --sombra-flotante: 0 4px 12px rgb(0 0 0 / 0.3);
+  --sombra-error: 0 0 5px rgb(154 52 18 / 0.2);
+
+  /* Tipografías */
+  --fuente-texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-titulos: Georgia, "Times New Roman", serif;
+
+  /* Reto Lab 5: Variable para bordes redondeados */
+  --radio: 0.5rem;
+
+  /* Lab 9: le dice al navegador que el sitio soporta claro y oscuro
+     (así los controles nativos —campos, barras de scroll— también cambian) */
+  color-scheme: light dark;
+}
+
+/* ---------- 2. Reset moderno (Laboratorio 5) ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* La regla de oro de las imágenes y medios */
+img, picture, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radio);
+}
+
+/* El iframe NO lleva height:auto (se encogería a 150px) */
+iframe {
+  display: block;
+  width: 100%;   /* el atributo width="600" del HTML es solo la medida de reserva; en pantalla ocupa todo el ancho */
+  max-width: 100%;
+  border: 0;
+  border-radius: var(--radio);
+}
+
+input, select, textarea, button {
+  font: inherit;
+}
+
+/* ---------- 3. Tipografía y colores base (Laboratorio 5) ---------- */
+body {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-bosque);
+  line-height: 1.2;
+}
+
+/* Tamaños con rem y h1 fluido con clamp() */
+h1 {
+  font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+/* Reto Lab 5: Modo de lectura cómoda */
+p {
+  max-width: 65ch;
+}
+
+/* ---------- 4. Enlaces (Laboratorio 5) ---------- */
+a {
+  color: var(--color-bosque);
+}
+
+a:hover {
+  color: var(--color-tierra);
+}
+
+/* ---------- 5. Espaciado básico del contenido (Laboratorio 5) ---------- */
+main {
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/* ==========================================================================
+   LABORATORIO 6: SELECTORES, PSEUDOCLASES Y PSEUDOELEMENTOS
+   ========================================================================== */
+
+/* ---------- 6. Foco visible y Selección ---------- */
+:focus-visible {
+  outline: 3px solid var(--color-tierra);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-sol);
+  color: var(--color-texto-sobre-sol);
+}
+
+/* ---------- 7. Menú y página actual ---------- */
+.marca p:first-child {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.marca p:nth-child(2) {
+  color: var(--color-suave);
+  margin-top: 0;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+header nav li {
+  margin-inline-end: 0;
+}
+
+header nav a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+header nav a[aria-current="page"] {
+  color: var(--color-texto);
+  border-block-end: 3px solid var(--color-sol);
+}
+
+/* ---------- 8. Botones y enlaces externos ---------- */
+.boton {
+  display: inline-block;
+  background-color: var(--color-sol);
+  color: var(--color-texto-sobre-sol);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.75em 1.5em;
+  border: 2px solid var(--color-sol);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-bosque);
+  border-color: var(--color-bosque);
+}
+
+.boton:active {
+  transform: translateY(1px);
+}
+
+a[target="_blank"]::after {
+  content: " ↗";
+}
+
+/* ---------- 9. Listas y texto ---------- */
+li::marker {
+  color: var(--color-bosque);
+}
+
+blockquote {
+  border-left: 4px solid var(--color-sol);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+}
+
+dt {
+  font-weight: bold;
+}
+
+main > p:first-of-type::first-letter {
+  font-size: 2.5rem;
+  color: var(--color-tierra);
+  font-weight: bold;
+}
+
+a:visited {
+  color: var(--color-suave);
+}
+
+/* ---------- 10. Tabla y :target ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  background-color: var(--color-marca-fondo);
+  color: var(--color-texto-sobre-marca);
+  padding: 0.5rem;
+}
+
+tbody td, tbody th {
+  padding: 0.5rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--color-cebra);
+}
+
+tbody tr:hover {
+  background-color: var(--color-resalte);
+}
+
+tbody td:nth-child(n + 3) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabla-desplazable {
+  overflow-x: auto;
+}
+
+article:target {
+  background-color: var(--color-superficie);
+  outline: 3px solid var(--color-sol);
+  padding: 1rem;
+  border-radius: var(--radio);
+}
+
+/* ---------- 11. Formulario ---------- */
+label {
+  display: block;
+  font-weight: 600;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: inline;
+  font-weight: 400;
+}
+
+input:not([type="radio"], [type="checkbox"]),
+select, textarea {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-borde-fuerte);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+}
+
+input:user-invalid, select:user-invalid {
+  border-color: var(--color-tierra);
+  background-color: var(--color-error-fondo);
+}
+
+fieldset {
+  border-color: var(--color-borde-fuerte);
+}
+
+fieldset:has(:user-invalid) {
+  border-color: var(--color-tierra);
+  box-shadow: var(--sombra-error);
+}
+
+/* ==========================================================================
+   LABORATORIO 7: MODELO DE CAJA, POSICIONAMIENTO Y FLEXBOX
+   ========================================================================== */
+
+/* ---------- 12. Cabecera y Flexbox (BASE = celular; la cabecera fija llega en la sección 23) ---------- */
+header {
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra-cabecera);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1rem;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ---------- 13. Tarjetas con Flexbox ---------- */
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  position: relative;
+  flex: 1 1 16rem;
+  padding: 1rem;
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  margin: 0;
+  border-radius: 0.75rem;
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.insignia {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background-color: var(--color-acento-fondo);
+  color: var(--color-texto-sobre-marca);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 0;
+  z-index: 5;
+}
+
+.tarjeta img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* ---------- 14. Botón flotante de WhatsApp ---------- */
+.whatsapp-flotante {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 20;
+  background-color: var(--color-marca-fondo);
+  color: var(--color-texto-sobre-marca);
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: var(--sombra-flotante);
+}
+
+.whatsapp-flotante:hover {
+  background-color: var(--color-acento-fondo);
+  color: var(--color-texto-sobre-marca);
+}
+
+/* ---------- 15. Pie de página (Footer) ---------- */
+footer {
+  background-color: var(--color-marca-fondo);
+  color: var(--color-texto-sobre-marca);
+  padding: 2rem 1rem 6rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: var(--color-texto-sobre-marca);
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: var(--color-sol);
+}
+
+footer address {
+  font-style: normal;
+}
+
+/* ==========================================================================
+   LABORATORIO 8: CSS GRID
+   ========================================================================== */
+
+/* ---------- 16. Esqueleto de la página con áreas nombradas ---------- */
+body {
+  display: grid;
+  grid-template-areas:
+    "cabecera"
+    "principal"
+    "pie";
+  grid-template-columns: minmax(0, 1fr);   /* la única columna nunca es más ancha que la pantalla */
+  grid-template-rows: auto 1fr auto;   /* 1fr = "todo el espacio que sobre": el pie queda abajo */
+  min-height: 100dvh;
+}
+
+header { grid-area: cabecera; }
+
+main {
+  grid-area: principal;
+  min-width: 0;   /* ¡importante! sin esto la tabla de tarifas ensancha la columna y la página desborda en 390 px */
+  width: 100%;    /* con margin-inline:auto (sección 5) un ítem de grid ya no se estira: se encoge al contenido
+                     y la tabla lo ensanchaba igual; width:100% lo ata al ancho de la columna */
+}
+
+footer { grid-area: pie; }
+
+/* ---------- 17. Portada: texto SOBRE la foto, con Grid (sin position:absolute) ---------- */
+.hero {
+  display: grid;
+  grid-template-areas: "hero";
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* imagen y texto en la MISMA celda */
+.hero > * {
+  grid-area: hero;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  min-height: 24rem;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.hero-texto {
+  align-self: end;
+  padding: 2rem 1rem 1rem;
+  /* el degradado garantiza el contraste del texto blanco aunque la foto sea clara */
+  background: linear-gradient(to top,
+    rgb(var(--velo-rgb) / 0.92),
+    rgb(var(--velo-rgb) / 0.55) 70%,
+    transparent);
+  color: var(--color-texto-sobre-marca);
+}
+
+.hero-texto h1 {
+  color: inherit;   /* el h1 global es verde: sobre la foto va blanco */
+  margin-top: 0;
+}
+
+/* ---------- 18. Galería adaptable: SIN una sola media query ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem 1rem;
+}
+
+.galeria figure {
+  margin: 0;   /* quita el margen por defecto de <figure> (40px a cada lado) */
+}
+
+.galeria h2 {
+  margin-top: 0;
+}
+
+/* Alineación fina: cada ficha hereda las filas de la galería (subgrid), así las fotos
+   empiezan a la misma altura aunque un título ocupe dos líneas y otro una. */
+.galeria > section {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0.5rem;
+}
+
+.galeria img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* ---------- 19. Fichas de datos: término | valor en dos columnas alineadas ---------- */
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+}
+
+dd {
+  margin: 0;
+}
+
+/* ---------- 20. Pie en columnas automáticas ---------- */
+footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.5rem 2rem;
+}
+
+/* ==========================================================================
+   LABORATORIO 9: RESPONSIVE MOBILE-FIRST Y MODO OSCURO
+   ========================================================================== */
+
+/* ---------- 22. BASE para el celular (sin media query) ---------- */
+/* La base ya está arriba: la cabecera NO es fija (no tapa medio sitio),
+   y el eslogan es pequeño. */
+.marca p:nth-child(2) {
+  font-size: 0.875rem;
+}
+
+/* Los dos fieldset principales de contacto.html: en el celular van apilados */
+.form-columnas {
+  display: block;
+}
+
+/* ---------- 23. Tablet en adelante: AGREGAMOS (breakpoints en em) ---------- */
+@media (min-width: 48em) {   /* ≈ 768 px */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  [id] {
+    scroll-margin-top: 8rem;
+  }
+
+  .marca p:nth-child(2) {
+    font-size: 1rem;
+  }
+
+  .hero img {
+    min-height: 28rem;
+  }
+
+  .hero-texto {
+    padding: 3rem 2rem 2rem;
+  }
+}
+
+/* Escritorio: AGREGAMOS más */
+@media (min-width: 64em) {   /* ≈ 1024 px */
+  /* el texto se acota a 44rem pero la capa oscura sigue ocupando todo el ancho
+     (si el max-width fuera del propio .hero-texto, el degradado terminaría en un borde duro) */
+  .hero-texto > * {
+    max-width: 44rem;
+  }
+
+  .form-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+}
+
+/* ---------- 24. Modo oscuro: se redefinen SOLO los tokens, ni una regla más ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fondo: #121c17;          /* 14.7:1 con el texto */
+    --color-texto: #e6ede8;
+    --color-suave: #aebbb3;          /* 8.8:1 */
+    --color-bosque: #8fd3a9;         /* 10.0:1 */
+    --color-tierra: #f4a582;         /* 8.8:1 */
+    --color-superficie: #1b2a22;
+    --color-borde: #34463c;
+    --color-borde-fuerte: #52665a;
+    --color-cebra: #18251e;
+    --color-resalte: #2a3b31;
+    --color-error-fondo: #3a211a;
+  }
+}
+
+/* ==========================================================================
+   LABORATORIO 11: MOVIMIENTO CON PROPÓSITO
+   ========================================================================== */
+
+/* ---------- 26. Transiciones: suavizan un CAMBIO DE ESTADO (hover, foco, activo) ---------- */
+.boton,
+.whatsapp-flotante,
+header nav a {
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.tarjeta {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* La elevación solo tiene sentido con puntero: en pantallas táctiles no hay "hover" real */
+@media (hover: hover) {
+  .tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-tarjeta-elevada);
+  }
+}
+
+/* ---------- 27. Animación de entrada de la portada (@keyframes) ---------- */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-texto {
+  /* cubic-bezier "ease-out-quint": arranca rápido y frena suave (se siente natural) */
+  animation: aparecer 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html {
+  scroll-behavior: smooth;   /* los enlaces #ancla del índice de tours se deslizan */
+}
+
+/* ---------- 28. Respeto: menos movimiento si el usuario lo pide ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   25. RETO LAB 9: HOJA DE IMPRESIÓN (Ctrl+P de tours.html)
+   Va al final para ganarle al modo oscuro: en papel siempre claro y limpio.
+   ========================================================================== */
+@media print {
+  :root {
+    color-scheme: light;
+    --color-fondo: #ffffff;
+    --color-texto: #000000;
+    --color-suave: #333333;
+    --color-bosque: #000000;
+    --color-tierra: #000000;
+    --color-superficie: #ffffff;
+    --color-borde: #999999;
+    --color-cebra: #eeeeee;
+    --color-marca-fondo: #ffffff;
+    --color-texto-sobre-marca: #000000;
+    --sombra-cabecera: none;
+    --sombra-tarjeta: none;
+  }
+
+  body {
+    display: block;
+    font-size: 11pt;
+  }
+
+  /* fuera lo que no sirve en papel: menú, botón flotante, video, mapa, formulario, botones */
+  header nav,
+  .whatsapp-flotante,
+  video,
+  iframe,
+  form,
+  .boton,
+  nav[aria-label="Tours en esta página"] {
+    display: none;
+  }
+
+  header,
+  footer {
+    display: block;
+    position: static;
+    background: none;
+    padding: 0.5rem 0;
+  }
+
+  footer {
+    border-top: 1px solid var(--color-borde);
+    text-align: left;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* una tarjeta o un tour no se parte entre dos hojas */
+  article,
+  figure,
+  tr {
+    break-inside: avoid;
+  }
+
+  /* en papel no se puede hacer clic: se imprime la dirección del enlace externo */
+  main a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+}
+/* ==========================================================================
+   PORTADA PARALLAX (index.html)
+   La ruta de la imagen es relativa al CSS: css/ -> ../img/
+   ========================================================================== */
+.parallax {
+  display: grid;
+  align-items: end;                 /* el texto queda abajo, sobre la foto */
+  min-height: 70vh;
+  min-height: 70dvh;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  /* Capa 1: degradado oscuro para que el texto blanco se lea.
+     Capa 2: la foto. */
+  background-image:
+    linear-gradient(
+      to top,
+      rgb(var(--velo-rgb, 15 35 25) / 0.9),
+      rgb(var(--velo-rgb, 15 35 25) / 0.45) 60%,
+      transparent
+    ),
+    url("../img/Portada_Prueba.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bosque, #1f5f3f);  /* mientras carga la foto */
+}
+
+.parallax-texto {
+  max-width: 44rem;
+  padding: 2rem 1rem 1.5rem;
+  color: var(--color-texto-sobre-marca, #ffffff);
+}
+
+.parallax-texto h1 {
+  margin-top: 0;
+  color: inherit;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+}
+
+.parallax-texto p {
+  color: inherit;
+}
+
+/* Más espacio en pantallas medianas y grandes */
+@media (min-width: 48em) {
+  .parallax {
+    min-height: 80vh;
+    min-height: 80dvh;
+  }
+  .parallax-texto {
+    padding: 3rem 2rem 2.5rem;
+  }
+}
+
+/* El efecto parallax: solo en pantallas con mouse y si el usuario
+   NO pidió menos movimiento. En celulares queda como foto normal. */
+@media (min-width: 48em) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .parallax {
+    /* capa 1 (degradado) normal, capa 2 (foto) fija */
+    background-attachment: scroll, fixed;
+  }
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y reservas · Senderos San José</title>
+  <meta name="description" content="Escríbenos por WhatsApp o correo. Conoce nuestros horarios de atención y cómo llegar a San José de Chiquitos.">
+  <link rel="canonical" href="https://senderossanjose.bo/contacto.html">
+  
+  <!-- Hoja de estilos principal (Laboratorios 5 a 11) -->
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <meta name="theme-color" content="#1f5f3f">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+</head>
+<body>
+
+  <!-- CABECERA Y MENÚ (Con div.marca del Lab 7) -->
+  <header>
+    <div class="marca">
+      <p><strong>Senderos San José</strong></p>
+      <p>Turismo histórico, cultural y de naturaleza en la Chiquitania</p>
+    </div>
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <h1>Contacto y reservas</h1>
+    <p>Escríbenos por WhatsApp o correo y te respondemos el mismo día. Para grupos de más de 8 personas consulta por nuestras tarifas especiales.</p>
+    
+    <h2>Horario de atención</h2>
+    <dl>
+      <dt>Lunes a sábado</dt>
+      <dd>de 08:00 a 19:00</dd>
+      <dt>Domingos y feriados</dt>
+      <dd>de 08:00 a 12:00</dd>
+    </dl>
+
+    <h2>Canales</h2>
+    <ul>
+      <li>WhatsApp: <a href="https://wa.me/59170000000">Escríbenos al +591 700 00000</a></li>
+      <li>Teléfono fijo: <a href="tel:+59139440000">+591 3&nbsp;944&nbsp;0000</a></li>
+      <li>Correo: <a href="mailto:reservas@senderossanjose.bo">reservas@senderossanjose.bo</a></li>
+    </ul>
+
+    <h2>Cómo llegar desde Santa Cruz de la Sierra</h2>
+    <ol>
+      <li>Toma un trufi, bus o tren desde la terminal Bimodal de Santa Cruz.</li>
+      <li>El viaje en vehículo dura unas 4 horas (266 km) por la carretera bioceánica asfaltada.</li>
+      <li>Al llegar a San José, dirígete a la plaza principal; nuestra oficina está justo frente al Conjunto Misional.</li>
+    </ol>
+
+    <!-- Mapa actualizado a San José de Chiquitos (Sin style="border:0;" en línea) -->
+    <h2>Nuestra ubicación en el mapa</h2>
+    <iframe src="https://www.google.com/maps?q=San+Jos%C3%A9+de+Chiquitos,+Santa+Cruz,+Bolivia&amp;output=embed" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa interactivo de San José de Chiquitos"></iframe>
+
+    <p>
+      <a href="https://maps.google.com/?q=San+Jose+de+Chiquitos,Santa+Cruz,Bolivia" target="_blank" rel="noopener">Ver ubicación en Google Maps (se abre en una pestaña nueva)</a>
+    </p>
+
+    <!-- FORMULARIO DE RESERVAS -->
+    <h2 id="reserva">Reserva tu tour</h2>
+    <form action="gracias.html" method="get">
+      
+      <!-- Lab 9: en escritorio "Tus datos" y "Tu tour" quedan lado a lado -->
+      <div class="form-columnas">
+      <fieldset>
+        <legend>Tus datos</legend>
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        
+        <label for="correo">Correo electrónico *</label>
+        <input type="email" id="correo" name="correo" autocomplete="email" required>
+        
+        <label for="celular">Celular *</label>
+        <input type="tel" id="celular" name="celular" inputmode="numeric" pattern="[67][0-9]{7}" aria-describedby="ayuda-celular" required>
+        <p id="ayuda-celular">8 dígitos, empieza con 6 o 7. Ejemplo: 70000000</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu tour</legend>
+        
+        <label for="tour">Tour *</label>
+        <select id="tour" name="tour" required>
+          <option value="">Selecciona un tour...</option>
+          <option value="misiones">Conjunto Misional Jesuítico</option>
+          <option value="santacruzvieja">Parque Nacional Santa Cruz la Vieja</option>
+          <option value="valleluna">Valle de la Luna</option>
+          <option value="mirador">Mirador de Ñuflo y El Sutó</option>
+        </select>
+
+        <label for="fecha">Fecha *</label>
+        <input type="date" id="fecha" name="fecha" min="2026-10-12" required>
+
+        <label for="adultos">Cantidad de adultos *</label>
+        <input type="number" id="adultos" name="adultos" min="1" max="8" required>
+
+        <label for="ninos">Cantidad de niños (5 a 12 años)</label>
+        <input type="number" id="ninos" name="ninos" min="0" max="8">
+
+        <fieldset>
+          <legend>Idioma del guía</legend>
+          <ul>
+            <li>
+              <input type="radio" id="idioma-es" name="idioma" value="espanol" checked>
+              <label for="idioma-es">Español</label>
+            </li>
+            <li>
+              <input type="radio" id="idioma-en" name="idioma" value="ingles">
+              <label for="idioma-en">Inglés</label>
+            </li>
+            <li>
+              <input type="radio" id="idioma-pt" name="idioma" value="portugues">
+              <label for="idioma-pt">Portugués</label>
+            </li>
+          </ul>
+        </fieldset>
+      </fieldset>
+      </div>
+
+      <label for="comentarios">Comentarios (opcional)</label>
+      <textarea id="comentarios" name="comentarios" maxlength="500"></textarea>
+
+      <p>
+        <input type="checkbox" id="politicas" name="politicas" required>
+        <label for="politicas">Leí y acepto las <a href="legal/politicas.html">políticas de reserva y cancelación</a></label>
+      </p>
+
+      <!-- Botón con class="boton" del Lab 6 -->
+      <button type="submit" class="boton">Enviar solicitud de reserva</button>
+    </form>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <address>
+      <p>Senderos San José · Plaza Principal, Frente al Conjunto Misional, San José de Chiquitos, Bolivia</p>
+      <p>
+        WhatsApp: <a href="https://wa.me/59170000000">+591 700 00000</a> · 
+        Correo: <a href="mailto:reservas@senderossanjose.bo">reservas@senderossanjose.bo</a>
+      </p>
+    </address>
+    <p>© 2026 Senderos San José. Sitio desarrollado por: Darcko Alejandro Roca – Diseño Web I, UPDS</p>
+    <p><a href="legal/politicas.html">Políticas de reserva y cancelación</a></p>
+  </footer>
+
+</body>
+</html>

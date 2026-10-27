@@ -1,0 +1,9 @@
+# .gitattributes — finales de línea consistentes entre Windows, macOS y Linux
+# Los archivos de texto se guardan en el repositorio con LF (el estándar de la web y de los servidores).
+* text=auto eol=lf
+
+# Binarios: nunca tocar
+*.webp binary
+*.jpg binary
+*.png binary
+*.mp4 binary

@@ -1,0 +1,200 @@
+{
+  "navbar": {
+    "visibleToggler": true,
+    "menuVisibleAntes": false,
+    "expandedAntes": "false",
+    "expandedDespues": "true",
+    "menuVisibleDespues": true,
+    "expandedCerrar": "false"
+  },
+  "grilla": {
+    "390": {
+      "columnasPorFila": 1,
+      "altoCards": [
+        493,
+        453,
+        429
+      ],
+      "bienvenidaLadoALado": false,
+      "overflow": 0
+    },
+    "576": {
+      "columnasPorFila": 2,
+      "altoCards": [
+        506,
+        506,
+        418
+      ],
+      "bienvenidaLadoALado": false,
+      "overflow": 0
+    },
+    "992": {
+      "columnasPorFila": 3,
+      "altoCards": [
+        470,
+        470,
+        470
+      ],
+      "bienvenidaLadoALado": true,
+      "overflow": 0
+    },
+    "1280": {
+      "columnasPorFila": 3,
+      "altoCards": [
+        486,
+        486,
+        486
+      ],
+      "bienvenidaLadoALado": true,
+      "overflow": 0
+    }
+  },
+  "modal": {
+    "abierto": true,
+    "focoInicial": "rr-nombre",
+    "ariaModal": "true",
+    "role": "dialog",
+    "ariaHidden": null,
+    "recorridoTab": [
+      "rr-celular",
+      "rr-tour",
+      "btn btn-outline-secondary",
+      "btn btn-warning",
+      "modal-open",
+      "btn-close",
+      "rr-nombre",
+      "rr-celular",
+      "rr-tour"
+    ],
+    "focoSigueDentro": true,
+    "cerradoConEscape": true,
+    "focoVuelveAlBoton": "#reserva-rapida",
+    "celularInvalido": false,
+    "celularValido": true,
+    "urlEnvio": "gracias.html?nombre=Cliente+de+prueba&celular=70000000&tour=misiones"
+  },
+  "carrusel": {
+    "ride": null,
+    "inicial": 0,
+    "tras7sSinTocar": 0,
+    "trasSiguiente": 1,
+    "trasIndicador4": 3,
+    "indicadorActual": [
+      null,
+      null,
+      null,
+      "true"
+    ],
+    "lazy": [
+      null,
+      "lazy",
+      "lazy",
+      "lazy"
+    ]
+  },
+  "bs_light": {
+    "tema": "light",
+    "fondoBody": "rgb(251, 248, 242)",
+    "colorBody": "rgb(31, 41, 51)",
+    "navbarBg": "rgb(241, 236, 225)",
+    "btnWarning": "rgb(242, 193, 78)",
+    "btnWarningTxt": "rgb(31, 41, 51)",
+    "btnOutline": "rgb(31, 95, 63)",
+    "badge": "rgb(154, 52, 18)",
+    "h1": "rgb(31, 95, 63)",
+    "fuenteH1": "Georgia",
+    "cardBg": "rgb(251, 248, 242)",
+    "footerBg": "rgb(209, 231, 221)",
+    "link": "rgb(31, 95, 63)"
+  },
+  "bs_dark": {
+    "tema": "dark",
+    "fondoBody": "rgb(18, 28, 23)",
+    "colorBody": "rgb(230, 237, 232)",
+    "navbarBg": "rgb(24, 37, 30)",
+    "btnWarning": "rgb(242, 193, 78)",
+    "btnWarningTxt": "rgb(31, 41, 51)",
+    "btnOutline": "rgb(143, 211, 169)",
+    "badge": "rgb(154, 52, 18)",
+    "h1": "rgb(143, 211, 169)",
+    "fuenteH1": "Georgia",
+    "cardBg": "rgb(18, 28, 23)",
+    "footerBg": "rgb(5, 27, 17)",
+    "link": "rgb(143, 211, 169)"
+  },
+  "header": {
+    "390": {
+      "position": "static",
+      "topTrasScroll": -1500
+    },
+    "768": {
+      "position": "sticky",
+      "topTrasScroll": 0
+    },
+    "1280": {
+      "position": "sticky",
+      "topTrasScroll": 0
+    }
+  },
+  "motion_no-preference": {
+    "animacion": "none",
+    "duracion": "0s",
+    "scrollBehavior": "auto"
+  },
+  "motion_reduce": {
+    "animacion": "none",
+    "duracion": "0s",
+    "scrollBehavior": "auto"
+  },
+  "tarjeta": {
+    "transition": "transform 0.25s, box-shadow 0.25s",
+    "transformHover": "matrix(1, 0, 0, 1, 0, -4)"
+  },
+  "galeria": {
+    "390": 1,
+    "768": 2,
+    "1024": 3,
+    "1280": 4
+  },
+  "dl": {
+    "dtLeft": [
+      96,
+      96,
+      96,
+      96
+    ],
+    "ddLeft": [
+      188,
+      188,
+      188,
+      188
+    ],
+    "cols": "75.9844px 996.016px"
+  },
+  "body": {
+    "areas": "\"cabecera\" \"principal\" \"pie\"",
+    "rows": "139.172px 2321.64px 326.375px"
+  },
+  "gracias_390": {
+    "pieBottom": 1174,
+    "alturaVentana": 800
+  },
+  "gracias_1280": {
+    "pieBottom": 820,
+    "alturaVentana": 800
+  },
+  "form_768": {
+    "fieldsetLeft": [
+      18,
+      18
+    ],
+    "casillaJuntoAlTexto": true
+  },
+  "form_1280": {
+    "fieldsetLeft": [
+      98,
+      658
+    ],
+    "casillaJuntoAlTexto": true
+  }
+}

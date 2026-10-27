@@ -1,0 +1,127 @@
+/* ==========================================================================
+   personalizado.css — Senderos San José · versión Bootstrap 5.3.8
+   Se carga DESPUÉS de bootstrap.min.css. Regla del curso: NUNCA se edita
+   bootstrap.min.css; aquí solo se redefinen VARIABLES (--bs-*) y se agrega
+   lo que Bootstrap no trae.
+   ========================================================================== */
+
+/* ---------- Lab 11 · Paso 1: la marca en Bootstrap (modo claro) ---------- */
+:root,
+[data-bs-theme="light"] {
+  --marca-bosque: #1f5f3f;
+  --marca-sol: #f2c14e;
+  --marca-sol-oscuro: #e0ac2f;
+  --marca-tierra: #9a3412;
+
+  --bs-body-bg: #fbf8f2;
+  --bs-body-bg-rgb: 251, 248, 242;       /* .bg-body usa la versión rgb */
+  --bs-body-color: #1f2933;
+  --bs-body-color-rgb: 31, 41, 51;
+  --bs-tertiary-bg: #f1ece1;
+  --bs-tertiary-bg-rgb: 241, 236, 225;   /* .bg-body-tertiary (navbar y "por qué elegirnos") usa la rgb */
+
+  --bs-link-color-rgb: 31, 95, 63;
+  --bs-link-hover-color-rgb: 154, 52, 18;
+  --bs-danger-rgb: 154, 52, 18;          /* badge "Más vendido": terracota misional */
+
+  --bs-body-font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-titulos: Georgia, "Times New Roman", serif;
+}
+
+/* ---------- Modo oscuro (data-bs-theme lo pone js/tema.js según el sistema) ---------- */
+[data-bs-theme="dark"] {
+  --marca-bosque: #8fd3a9;
+
+  --bs-body-bg: #121c17;
+  --bs-body-bg-rgb: 18, 28, 23;
+  --bs-body-color: #e6ede8;
+  --bs-body-color-rgb: 230, 237, 232;
+  --bs-tertiary-bg: #18251e;
+  --bs-tertiary-bg-rgb: 24, 37, 30;
+
+  --bs-link-color-rgb: 143, 211, 169;
+  --bs-link-hover-color-rgb: 244, 165, 130;
+}
+
+/* ---------- Botones: se redefinen las VARIABLES del componente, no sus reglas ---------- */
+.btn-warning {
+  --bs-btn-bg: var(--marca-sol);
+  --bs-btn-border-color: var(--marca-sol);
+  --bs-btn-color: #1f2933;
+  --bs-btn-hover-bg: var(--marca-sol-oscuro);
+  --bs-btn-hover-border-color: var(--marca-sol-oscuro);
+  --bs-btn-hover-color: #1f2933;
+  --bs-btn-active-bg: var(--marca-sol-oscuro);
+  --bs-btn-active-border-color: var(--marca-sol-oscuro);
+  --bs-btn-active-color: #1f2933;
+  --bs-btn-disabled-bg: var(--marca-sol);
+  --bs-btn-disabled-border-color: var(--marca-sol);
+  --bs-btn-disabled-color: #1f2933;
+}
+
+.btn-outline-success {
+  --bs-btn-color: var(--marca-bosque);
+  --bs-btn-border-color: var(--marca-bosque);
+  --bs-btn-hover-bg: var(--marca-bosque);
+  --bs-btn-hover-border-color: var(--marca-bosque);
+  --bs-btn-hover-color: var(--bs-body-bg);    /* texto = fondo de la página: contraste en claro Y en oscuro */
+  --bs-btn-active-bg: var(--marca-bosque);
+  --bs-btn-active-border-color: var(--marca-bosque);
+  --bs-btn-active-color: var(--bs-body-bg);
+  --bs-btn-disabled-color: var(--marca-bosque);
+  --bs-btn-disabled-border-color: var(--marca-bosque);
+}
+
+/* ---------- Lab 10 · tipografía y cards ---------- */
+h1, h2, h3, .navbar-brand {
+  font-family: var(--fuente-titulos);
+}
+
+h1, h2, .card-title {
+  color: var(--marca-bosque);
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;          /* el atributo height="433" del HTML no debe fijar la altura: manda aspect-ratio */
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.card {
+  --bs-card-bg: var(--bs-body-bg);
+  --bs-card-cap-bg: transparent;
+}
+
+/* ---------- Lab 11 · carrusel: fotos uniformes y leyenda legible sobre degradado ---------- */
+.carousel-item img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3rem 3rem 3rem;
+  background: linear-gradient(to top, rgb(15 35 25 / 0.9), rgb(15 35 25 / 0.55) 60%, transparent);
+  color: #fff;
+}
+
+.carousel-indicators {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Lab 11 · movimiento con propósito (también aquí se respeta reduced-motion) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

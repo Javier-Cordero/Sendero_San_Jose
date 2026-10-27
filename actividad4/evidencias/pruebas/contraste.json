@@ -1,0 +1,29 @@
+{
+ "sueltos": [
+  "rgb(var(--velo-rgb)",
+  "rgb(var(--velo-rgb)"
+ ],
+ "contraste": {
+  "CLARO texto/fondo": 13.92,
+  "CLARO enlace(bosque)/fondo": 7.16,
+  "CLARO suave/fondo": 5.47,
+  "CLARO tierra(hover)/fondo": 6.89,
+  "CLARO texto/superficie(tarjeta)": 14.76,
+  "CLARO blanco/marca-fondo(pie)": 7.59,
+  "CLARO texto/sol(boton)": 8.79,
+  "CLARO blanco/acento(insignia)": 7.31,
+  "OSCURO texto/fondo": 14.65,
+  "OSCURO bosque(enlace,h1)/fondo": 10.01,
+  "OSCURO suave/fondo": 8.77,
+  "OSCURO tierra/fondo": 8.76,
+  "OSCURO texto/superficie": 12.59,
+  "OSCURO bosque/superficie": 8.61,
+  "OSCURO texto/cebra": 13.34,
+  "OSCURO texto/resalte": 9.98,
+  "OSCURO texto/error-fondo": 12.49,
+  "OSCURO texto/sol(boton, NO cambia)": 8.79,
+  "OSCURO blanco/marca-fondo(pie)": 7.59,
+  "OSCURO sol(hover enlace pie)/marca-fondo": 4.52,
+  "ERROR (si texto-claro sobre sol sin token)": 1.41
+ }
+}

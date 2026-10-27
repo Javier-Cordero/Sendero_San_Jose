@@ -1,0 +1,13 @@
+# .gitignore — lo que NO se sube al repositorio
+# Fotos originales de cámara: la materia prima se queda en tu computadora
+img/originales/
+
+# Archivos del sistema operativo y del editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Borradores y pruebas locales
+*.tmp
+borradores/

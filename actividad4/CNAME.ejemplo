@@ -1,0 +1,3 @@
+# Si el cliente compra un dominio propio, renombra este archivo a CNAME (sin extensión) y deja SOLO la línea:
+# www.senderossanjose.bo
+# Luego, en el DNS del dominio, crea un registro CNAME  www → TU-USUARIO.github.io

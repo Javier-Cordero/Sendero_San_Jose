@@ -1,0 +1,7 @@
+# robots.txt — Senderos San José
+# Todas las páginas públicas se pueden rastrear. gracias.html y 404.html llevan <meta name="robots" content="noindex">:
+# NO se bloquean aquí, porque un bloqueo en robots.txt impediría que el buscador lea ese noindex.
+User-agent: *
+Allow: /
+
+Sitemap: https://senderossanjose.bo/sitemap.xml
